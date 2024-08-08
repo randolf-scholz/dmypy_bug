@@ -19,6 +19,7 @@ The first run should produce:
 ```text
 src/dmypy_final_bug/__init__.py:10: error: Final name must be initialized with a value  [misc]
 src/dmypy_final_bug/__init__.py:11: error: Final name must be initialized with a value  [misc]
+Found 2 errors in 1 file (checked 1 source file)
 ```
 
 and the second run yields different results, spreading the error message:
@@ -30,4 +31,5 @@ src/dmypy_final_bug/__init__.py:15: error: Final name must be initialized with a
 src/dmypy_final_bug/__init__.py:16: error: Final name must be initialized with a value  [misc]
 src/dmypy_final_bug/__init__.py:25: error: Final name must be initialized with a value  [misc]
 src/dmypy_final_bug/__init__.py:26: error: Final name must be initialized with a value  [misc]
+Found 6 errors in 1 file (checked 1 source file)
 ```
