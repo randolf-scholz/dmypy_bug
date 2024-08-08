@@ -5,8 +5,6 @@ Mypy currently does not support `Final` annotation on dataclasses
 Therefore, the error message `Final name must be initialized with a value` is expected on `MyDataclass` in `__init__.py`.
 However, running `dmypy check src` a second time spreads this error message to `MyModule` and `ImmutablePoint`.
 
-
-
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
@@ -33,4 +31,3 @@ src/dmypy_final_bug/__init__.py:16: error: Final name must be initialized with a
 src/dmypy_final_bug/__init__.py:25: error: Final name must be initialized with a value  [misc]
 src/dmypy_final_bug/__init__.py:26: error: Final name must be initialized with a value  [misc]
 ```
-
