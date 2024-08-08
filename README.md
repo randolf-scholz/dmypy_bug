@@ -1,12 +1,28 @@
-# Reproduction of [pytorch/issues/131765](https://github.com/pytorch/pytorch/issues/131765)
+# dmypy bug: Final name must be initialized with a value
 
 ```bash
-python3.11 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -e .
-pyright src
+dmypy start
+dmypy check src
+dmypy check src  # second run
 ```
 
-Expected message:
+The first run should produce:
 
-> `src/torch_131765/__init__.py:5:27` - error: "Adam" is not exported from module "torch.optim" (reportPrivateImportUsage)
+```text
+src/dmypy_final_bug/__init__.py:30: error: Final name must be initialized with a value  [misc]
+src/dmypy_final_bug/__init__.py:31: error: Final name must be initialized with a value  [misc]
+```
+
+and the second run:
+
+```text
+src/dmypy_final_bug/__init__.py:9: error: Final name must be initialized with a value  [misc]
+src/dmypy_final_bug/__init__.py:10: error: Final name must be initialized with a value  [misc]
+src/dmypy_final_bug/__init__.py:19: error: Final name must be initialized with a value  [misc]
+src/dmypy_final_bug/__init__.py:20: error: Final name must be initialized with a value  [misc]
+src/dmypy_final_bug/__init__.py:30: error: Final name must be initialized with a value  [misc]
+src/dmypy_final_bug/__init__.py:31: error: Final name must be initialized with a value  [misc]
+```
