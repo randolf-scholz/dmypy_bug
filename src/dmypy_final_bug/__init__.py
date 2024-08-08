@@ -5,6 +5,12 @@ from dataclasses import dataclass
 import torch
 
 
+@dataclass
+class MyDataClass:
+    x: Final[int]
+    y: Final[int]
+
+
 class ImmutablePoint:
     x: Final[int]
     y: Final[int]
@@ -23,9 +29,3 @@ class MyModule(torch.nn.Module):
         super().__init__()
         self.x = x
         self.y = y
-
-
-@dataclass
-class MyDataClass:
-    x: Final[int]
-    y: Final[int]
